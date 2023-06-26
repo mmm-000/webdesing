@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap");
+
+/* 自動スクロールスク */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*［bodyの書式］文字色:濃いグレー、文字サイズ:16px、書体:游ゴシック体、背景色:ベージュ */
+body {
+  /* テキストのデフォルトの書式 */
+  color: #333;
+  font-size: 16px;
+  font-family: "Yu Gothic Medium", YuGothic, sans-serif;
+  /* ページの背景色. */
+  background-color: beige;
+}
+
+/*［リンク文字の書式］文字色：親と同じ、下線なし → body書式の下へ移動、WebDesignにリンクを設定 */
+a {
+  color: inherit;
+  /* ↑親と同じ文字色 */
+  text-decoration: none;
+  /* だんだん変わる */
+  transition: 0.5s;
+}
+/* マテリアルアイコンの設定 */
+[class^="material-"] {
+  font-size: inherit;
+  vertical-align: -0.1em;
+}
+
+/*［class="container"の書式］背景色:白、幅:980px、中央配置、内側左右余白:20px */
+.container {
+  background-color: #fff;
+  /* 幅と右左の余白指定する↓ */
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*［WebDesignの書式］
+背景色:青、文字色:白、中央揃え、余白:30px
+→文字サイズ:30px、太字
+→外側下余白:20px */
+header h1 {
+  font-family: "Bagel Fat One", cursive;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、外側下余白:20px、中央揃え、内側上下余白:15px */
+nav {
+  /* border 線幅、線種、線カラーでワンセット */
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: rgb(204, 17, 17);
+  border-bottom: 2px solid rgb(204, 17, 17);
+  /* スペースを空けて↑一行にもできる */
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* position関係の書式 */
+  background-color: rgba(255, 255, 255, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  /* 重ね順を決められる↑ */
+
+  @media (max-width: 767px) {
+    position: unset;
+  }
+  /*［メニュー項目の書式］１行で表示、隣との間:20px */
+  /* &を使えば中に入れて省略できる */
+  & ul {
+    display: flex;
+    /* 均等に間をあけて中央ぞろえを維持↓ */
+    justify-content: center;
+    column-gap: 20px;
+    color: #333;
+    /*［メニューのリンク文字のホバー設定］下線表示、不透明度:70% */
+    /* ↓マウスオーバーの書式:hoverで設定 */
+    & a {
+      &:hover {
+        text-decoration: underline;
+        opacity: 0.7;
+        /* ↑０～１で設定 */
+      }
+
+      /*［HOMEの書式］太字 */
+      /* ↓classで固有にして .~指定する */
+      & a.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/*［mainの書式］下余白:30px */
+main {
+  padding-bottom: 30px;
+}
+/*nextから 引っ越してきた */
+/*［大見出しの書式］文字色:黒、文字サイズ:20px、太字、背景画像:h1_bg.jpg、行の高さ:80px、背景画像サイズ:カバー、背景画像位置:中央、内側左余白:30px、外側下余白:30px */
+main article h1 {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  background-image: url(../img/h1_bg.jpg);
+  line-height: 80px;
+  /* ↓サイズをカバーであわせてくれる */
+  background-size: cover;
+  /* 背景画像の表示位置↓ */
+  background-position: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 30px;
+  /* テキストシャドー */
+  text-shadow: 2px 2px 2px #ffffff;
+}
+
+/*［footerの書式］背景色:黒、文字色:白、中央揃え、高さ:50px */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  /* 左右は中央ぞろえ出来るが、上下は計算して揃える */
+  /* 高さ引く文字サイズ÷２ */
+  padding-top: 17px;
+}
+/* height使うくらいならpadding(内側)余白で作る */
+
+/*［ページトップ］固定配置、右:12px、下:9px */
+footer p.pagetop {
+  position: fixed;
+  right: 12px;
+  bottom: 9px;
+}
+
+/* 不透明度:0.7 */
+footer p.pagetop a:hover {
+  opacity: 0.7;
+}
+
+/*［著作権］幅:980px、中央配置、右揃え */
+footer p.copyright {
+  width: 85%;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: right;
+}
+/* レスポンシブ めちゃ重要スマホCSS*/
+@media (max-width: 767px) {
+  header h1 {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  footer p.copyright {
+    text-align: center;
+  }
+}
+/* スマホ縦 */
+@media (max-width: 575px) {
+  nav li {
+    display: block;
+    padding: 10px 0;
+  }
+  footer p.copyright span {
+    display: none;
+  }
+}
